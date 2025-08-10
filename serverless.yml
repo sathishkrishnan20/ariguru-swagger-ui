@@ -1,0 +1,32 @@
+service: digi-gold-api-docs
+frameworkVersion: '3'
+
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-south-1
+  architecture: arm64
+  memorySize: 512
+  timeout: 30
+
+custom:
+  serverless-offline:
+    httpPort: 4002
+    lambdaPort: 4004
+package:
+  individually: true
+
+functions:
+  docs:
+    handler: dist/docs.handler
+    events:
+      - http: 
+          path: /
+          method: any
+          cors: true
+
+
+plugins:
+  - serverless-offline
