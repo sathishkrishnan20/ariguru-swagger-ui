@@ -30,4 +30,5 @@ app.get('/api/oauth2-redirect.html', (req, res) => {
   res.sendFile(path.join(__dirname, './public/oauth2-redirect.html'));
 });
 app.listen(4005)
+export default app;
 // export const handler = serverless(app);
